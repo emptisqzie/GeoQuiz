@@ -99,21 +99,38 @@ fun GeoQuizScreen() {
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Button(onClick = {}) {
-                    Text("TRUE")
-                }
+            if (!answered) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Button(
+                        onClick = {
+                            if (currentQuestion.answer) {
+                                correctAnswers++
+                            }
+                            answered = true
+                        }
+                    ) {
+                        Text("TRUE")
+                    }
 
-                Button(onClick = {}) {
-                    Text("FALSE")
+                    Button(
+                        onClick = {
+                            if (!currentQuestion.answer) {
+                                correctAnswers++
+                            }
+                            answered = true
+                        }
+                    ) {
+                        Text("FALSE")
+                    }
                 }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
+            // Кнопка перехода пока без логики
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End
